@@ -3,12 +3,27 @@ package recfun
 
 object Main {
   def main(args: Array[String]) {
-    println("Pascal's Triangle")
-    for (row <- 0 to 10) {
-      for (col <- 0 to row)
-        print(pascal(col, row) + " ")
-      println()
+
+    def product(f: Int => Int)( a: Int, b: Int): Int = {
+      if (a > b) 1 else f(a) * product(f)( a + 1, b)
     }
+
+    println(product(x => x * x)( 1, 3))
+
+    def fact(x:Int): Int = {
+      product(x => x)(1, x)
+    }
+
+    println(fact(5))
+
+
+
+    //    println("Pascal's Triangle")
+    //    for (row <- 0 to 10) {
+    //      for (col <- 0 to row)
+    //        print(pascal(col, row) + " ")
+    //      println()
+    //    }
   }
 
   /**
