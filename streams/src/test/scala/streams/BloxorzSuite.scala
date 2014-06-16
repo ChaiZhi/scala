@@ -43,6 +43,7 @@ class BloxorzSuite extends FunSuite {
   test("terrain function level 1") {
     new Level1 {
       assert(terrain(Pos(0,0)), "0,0")
+      assert(terrain(Pos(1,3)), "1,3")
       assert(!terrain(Pos(4,11)), "4,11")
     }
   }
@@ -50,6 +51,13 @@ class BloxorzSuite extends FunSuite {
   test("findChar level 1") {
     new Level1 {
       assert(startPos == Pos(1,1))
+    }
+  }
+
+  test("solve neighborsWithHistory") {
+    new Level1 {
+      val stream = neighborsWithHistory(Block(Pos(1, 1), Pos(1, 1)), List(Left, Up))
+      println(newNeighborsOnly(stream,Set(Block(Pos(1,2),Pos(1,3)), Block(Pos(1, 1), Pos(1, 1)))).take(2).toList)
     }
   }
 
@@ -63,5 +71,14 @@ class BloxorzSuite extends FunSuite {
     new Level1 {
       assert(solution.length == optsolution.length)
     }
+  }
+
+  test("own") {
+    new Level1 {
+
+      val b = Block(Pos(1,2), Pos(1,3))
+      println(Vector(1, 2).length)
+    }
+
   }
 }
